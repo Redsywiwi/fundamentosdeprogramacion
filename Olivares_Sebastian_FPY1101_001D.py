@@ -14,15 +14,14 @@ productos={'8475HD':    ['HP',      15.6,   '8GB',  'HDD', '1T',        'Intel C
 
 #   modelo      precio      stock
 stock = {
-    '8475HD':   [387990,    10], 
-    '2175HD':   [327990,    4], 
-    'JjfFHD':   [424990,    1],
-    'fgdxFHD':  [664990,    21], 
-    '123FHD':   [290890,    32], 
-    '342FHD':   [444990,    7],
-    'GF75HD':   [749990,    2], 
-    'UWU131HD': [349990,    1], 
-    'FS1230HD': [249990,    0]
+    '8475HD':   [387990,    10, '8475HD'], 
+    '2175HD':   [327990,    4,'2175HD'], 
+    'JjfFHD':   [424990,    1,'JjfFHD'],
+    'fgdxFHD':  [664990,    21,'fgdxFHD'], 
+    '123FHD':   [290890,    32,'123FHD'], 
+    '342FHD':   [444990,    7, '342FHD'],
+    'GF75HD':   [749990,    2,'GF75HD'], 
+    'UWU131HD': [349990,    1,'UWU131HD'], 
 }
 def stocks(MARCAINPUT):
     stock_suma=0
@@ -31,13 +30,18 @@ def stocks(MARCAINPUT):
         if MARCAINPUT.lower()==m.lower():
             s=(stock[producto])[1]
             stock_suma+=s
-    print(f"{MARCAINPUT.lower()}: {stock_suma}")
+    print(f"El stock de {MARCAINPUT.lower()} es: {stock_suma}")
     input("")
 
 def busqueda_precio(min,max):
-    for C in stock:
-        if min<=stock[0] and max>=stock[0]:
-            
+    resultados=[]
+    for Stocks in stock:
+        if min<=(stock[Stocks])[0] and max>=(stock[Stocks])[0]:
+            resultados.append((stock[Stocks])[2])
+    print(f"Los computadores disponibles son {resultados}")
+    input("")
+def actualizarprecio(modelo, nuevoprecio):
+    print("adieu")
 
 while True:
     c()
@@ -70,8 +74,8 @@ while True:
         try: nuevoprecio=int(input("Ingrese el nuevo precio\n"))
         except ValueError: print("el numero ingresado no es valido, abortando"); input(""); continue
 
-        print()
-
+        actualizarprecio(modelo, nuevoprecio)
+        
 
     #----- CERRAR -----
     elif seleccion==4:
