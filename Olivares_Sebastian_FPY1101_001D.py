@@ -39,9 +39,14 @@ def busqueda_precio(min,max):
         if min<=(stock[Stocks])[0] and max>=(stock[Stocks])[0]:
             resultados.append((stock[Stocks])[2])
     print(f"Los computadores disponibles son {resultados}")
+    
     input("")
 def actualizarprecio(modelo, nuevoprecio):
-    print("adieu")
+    for Stocks in stock:
+        if modelo==(stock[Stocks])[2]:
+            (stock[Stocks])[0]=nuevoprecio
+            input("El precio ha sido actualizado con exito")
+        else: print("No se ha podido encontrar el modelo buscado")
 
 while True:
     c()
